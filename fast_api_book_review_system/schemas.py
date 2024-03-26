@@ -1,72 +1,82 @@
 from pydantic import BaseModel
+from datetime import date
+
 
 class Author(BaseModel):
     name : str
-    date_of_birth : str
+    date_of_birth : date
     email : str
     nationality : str
 
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class Book(BaseModel):
     title : str
-    publication_year : str
-
-    class Config:
-        orm_mode = True
-
-
-
-class AddAuthor(BaseModel):
+    publication_year : int
     author_id : int
 
-
-
-# class ViewStudentWithTeacher(BaseModel):
-#     name : str
-#     department : str
-#     teacher : Teacher
-
-#     class Config:
-#         orm_mode = True
+    class Config:
+        from_attributes = True
 
 
 
-# class User(BaseModel):
+class BookWithAuthor(BaseModel):
+    title : str
+    publication_year : int
+    author : Author
 
-#     name : str
-#     email : str
-#     password : str
+    class Config:
+        from_attributes = True
 
 
-# class ShowUser(BaseModel):
+class Review(BaseModel):
+    title : str
+    review : str
+    rating : int
+    book_id : int
+
+    class Config:
+        from_attributes = True
+
+class ReviewWithBook(BaseModel):
+    title : str
+    review : str
+    rating : int
+    books : BookWithAuthor
+
+    class Config:
+        from_attributes = True
+
+
+
+class User(BaseModel):
+
+    name : str
+    email : str
+    password : str
+
+
+class ShowUser(BaseModel):
     
-#     name : str
-#     email : str
+    name : str
+    email : str
 
-#     class Config:
-#         orm_mode = True
-
-
-# class Login(BaseModel):
-#     email : str
-#     password : str
+    class Config:
+        from_attributes = True
 
 
-# class Token(BaseModel):
-#     access_token: str
-#     token_type: str
+class Login(BaseModel):
+    email : str
+    password : str
 
 
-# class TokenData(BaseModel):
-#     username: str | None = None
+class Token(BaseModel):
+    access_token: str
+    token_type: str
 
 
-# class Distance(BaseModel):
-#     lat1 : int
-#     lat2 : int
-#     lon1 : int
-#     lon2 : int
+class TokenData(BaseModel):
+    username: str | None = None
