@@ -1,4 +1,4 @@
-## fastapi-book-review-system
+### fastapi-book-review-system
 
 
 ## Introduction
@@ -49,8 +49,10 @@ This FastAPI application is a Book Review System that allows users to perform va
     MAIL_PORT=
     MAIL_SERVER=
     MAIL_FROM_NAME=
+4. Create a sqlite db.
+   In the main folder create a db file named book.db
 
-4. Run the application
+6. Run the application
 
     cd fastapi-book-review-system/
     python main.py
@@ -58,7 +60,6 @@ This FastAPI application is a Book Review System that allows users to perform va
 
 ## API Documentation
     Once the application is running, you can access the Swagger documentation at:
-
-
+    
     http://localhost:9000/docs
 
